@@ -7,73 +7,82 @@ import java.util.Scanner;
 public class Main implements Serializable{
 
 	public static void main(String[] args) {
-		 Scanner scanner = new Scanner(System.in);
-	        LocationManager locationManager = new LocationManager(3); 
-	        int opcion;
-	        do {
-	        	  System.out.println("Menú:");
-	              System.out.println("1. Agregar ubicación");
-	              System.out.println("2. Editar ubicación");
-	              System.out.println("3. Eliminar ubicación");
-	              System.out.println("4. Agregar conexión entre ubicaciones");
-	              System.out.println("5. Editar conexión entre ubicaciones");
-	              System.out.println("6. Calcular ruta más corta (Dijkstra)");
-	              System.out.println("7. Encontrar árbol de expansión mínima (Prim)");
-	              System.out.println("8. Encontrar árbol de expansión mínima (Kruskal)");
-	              System.out.println("9. Optimizar rutas (Floyd-Warshall)");
-	              System.out.println("10. Planificar ruta óptima (tiempo)");
-	              System.out.println("11. Planificar ruta óptima (total distancia)");
-	              System.out.println("12. Visualizar matriz de adyacencia");
-	              System.out.println("13. Salir");
-	              System.out.print("Seleccione una opción: ");
-	              opcion = scanner.nextInt();
+	    Scanner scanner = new Scanner(System.in);
+	    LocationManager locationManager = new LocationManager(3);
+	    int opcion;
+	    do {
+	        System.out.println("Menú:");
+	        System.out.println("1. Agregar ubicación");
+	        System.out.println("2. Editar ubicación");
+	        System.out.println("3. Eliminar ubicación");
+	        System.out.println("4. Agregar conexión entre ubicaciones");
+	        System.out.println("5. Editar conexión entre ubicaciones");
+	        System.out.println("6. Calcular ruta más corta (Dijkstra)");
+	        System.out.println("7. Encontrar árbol de expansión mínima (Prim)");
+	        System.out.println("8. Encontrar árbol de expansión mínima (Kruskal)");
+	        System.out.println("9. Optimizar rutas (Floyd-Warshall)");
+	        System.out.println("10. Planificar ruta óptima (tiempo)");
+	        System.out.println("11. Planificar ruta óptima (total distancia)");
+	        System.out.println("12. Visualizar matriz de adyacencia");
+	        System.out.println("13. Salir");
+	        System.out.print("Seleccione una opción: ");
+	        opcion = scanner.nextInt();
 
-	              switch (opcion) {
-	                  case 1:
-	                      addLocation(locationManager, scanner);
-	                      break;
-	                  case 2:
-	                	  editLocation(locationManager, scanner);
-	                      break;
-	                  case 3:
-	                	  deleteLocation(locationManager, scanner);
-	                      break;
-	                  case 4:
-	                	  addConnection(locationManager, scanner);
-	                      break;
-	                  case 5:
-	                	  editConnection(locationManager, scanner);
-	                      break;
-	                  
-	                  case 6:
-	                	  calcularRutaMasCorta(locationManager, scanner);
-	                      break;
-	                  case 7:
-	                	  encontrarArbolExpansionMinima(locationManager);
-	                      break;
-	                  case 8:
-	                	  encontrarArbolExpansionMinimaKruskal(locationManager);
-	                      break;
-	                  case 9:
-	                	  optimizarRutasFloydWarshall(locationManager);
-	                      break;
-	                  case 10:
-	                	  planificarRutaOptimaTiempo(locationManager);
-	                      break;
-	                  case 11:
-	                	  planificarRutaOptimaDistancia(locationManager);
-	                      break;
-	                  case 12:
-	                      locationManager.displayAdjacencyMatrix();
-	                      break;
-	                  case 13:
-	                      System.out.println("Saliendo del programa...");
-	                      break;
-	                  default:
-	                      System.out.println("Opción no válida. Inténtalo de nuevo.");
-	              }
-	          } while (opcion != 14);
-	    }
+	        switch (opcion) {
+	            case 1:
+	                addLocation(locationManager, scanner);
+	                break;
+	            case 2:
+	                editLocation(locationManager, scanner);
+	                break;
+	            case 3:
+	                deleteLocation(locationManager, scanner);
+	                break;
+	            case 4:
+	                addConnection(locationManager, scanner);
+	                break;
+	            case 5:
+	                editConnection(locationManager, scanner);
+	                break;
+
+	            case 6:
+	                calcularRutaMasCorta(locationManager, scanner);
+	                break;
+	            case 7:
+	                encontrarArbolExpansionMinima(locationManager);
+	                break;
+	            case 8:
+	                encontrarArbolExpansionMinimaKruskal(locationManager);
+	                break;
+	            case 9:
+	                optimizarRutasFloydWarshall(locationManager);
+	                break;
+	            case 10:
+	                planificarRutaOptimaTiempo(locationManager);
+	                break;
+	            case 11:
+	                planificarRutaOptimaDistancia(locationManager);
+	                break;
+	            case 12:
+	                locationManager.displayAdjacencyMatrix();
+	                break;
+	            case 13:
+	                System.out.println("Saliendo del programa...");
+	                break;
+	            default:
+	                System.out.println("Opción no válida. Inténtalo de nuevo.");
+	        }
+	        
+	        // Preguntar al usuario si quiere volver al menú principal
+	        if (opcion != 13) {
+	            System.out.print("¿Desea volver al menú principal? (Si/No): ");
+	            String respuesta = scanner.next();
+	            if (!respuesta.equalsIgnoreCase("Si")) {
+	                opcion = 13; // Si la respuesta no es "Sí", salir del bucle
+	            }
+	        }
+	    } while (opcion != 13);
+	}
 
 	public static void addLocation(LocationManager routeSystem, Scanner scanner) {
         System.out.print("ID de la ubicación: ");
