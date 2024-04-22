@@ -1,4 +1,4 @@
-# Sistema-de-gesti-n-de-Rutas
+# Sistema-de-gestion-de-Rutas
 Sistema de Gestión de Rutas
 Este sistema de gestión de rutas proporciona una interfaz para administrar ubicaciones y conexiones entre ellas, así como para calcular rutas óptimas utilizando varios algoritmos.
 Clases y Métodos
